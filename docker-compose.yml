@@ -1,0 +1,14 @@
+version: '2.4'
+services:
+  ptcresend:
+    container_name: ptcresend
+    build:
+      context: ./PTCresend
+    command: "python3 resender.py accounts.csv"
+    restart: "no"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./PTCresend/accounts.csv:/usr/src/app/accounts.csv
+    networks:
+      - default
